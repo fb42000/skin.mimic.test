@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <controls>
+        <control type="group">
+            <animation effect="slide" start="0,-120" end="0,0" time="1500">WindowOpen</animation>
+            <animation effect="slide" start="0,-120" end="0,0" time="1500">VisibleChange</animation>
+            <animation effect="slide" start="0,0" end="0,-120" time="1500">WindowClose</animation>
+            <visible>!Window.IsActive(videoosd) | VideoPlayer.Content(musicvideos)</visible>
+            <top>0</top>
+            <control type="image">
+                <top>-16</top>
+                <left>-16</left>
+                <width>1952</width>
+                <height>90</height>
+                <texture border="16">dialog_context.png</texture>
+                <colordiffuse>dialog</colordiffuse>
+            </control>
+            <control type="label">
+                <top>10</top>
+                <left>1600</left>
+                <width>500</width>
+                <height>35</height>
+                <font>font30</font>
+                <align>center</align>
+                <label>$INFO[System.Time]</label>
+            </control>
+        </control>
+        <control type="group">
+            <animation effect="slide" start="0,400" end="0,0" time="200">WindowOpen</animation>
+            <animation effect="slide" start="0,400" end="0,0" time="200">VisibleChange</animation>
+            <animation effect="slide" start="0,0" end="0,400" time="200">WindowClose</animation>
+            <top>680</top>
+            <visible>![VideoPlayer.Content(livetv) | VideoPlayer.Content(musicvideos)]</visible>
+            <visible>!Window.IsActive(videoosd)</visible>
+            <control type="image">
+                <top>-14</top>
+                <left>-16</left>
+                <width>1952</width>
+                <height>432</height>
+                <texture border="16">dialog_context.png</texture>
+                <colordiffuse>dialog</colordiffuse>
+            </control>
+            <control type="image">
+                <left>30</left>
+                <top>30</top>
+                <width>227</width>
+                <height>340</height>
+                <aspectratio aligny="center" align="center" scalediffuse="false">scale</aspectratio>
+                <texture background="true" diffuse="diffuse/fullscreeninfo.png">$VAR[PlayerArtworkVar]</texture>
+            </control>
+            <control type="grouplist">
+                <left>290</left>
+                <top>15</top>
+                <control type="label">                  
+                    <width>1350</width>
+                    <height>70</height>
+                    <font>font36</font>
+                    <aligny>top</aligny>
+                    <label>$VAR[PlayerTitleLabelVar]</label>
+                    <visible>!VideoPlayer.Content(episodes)</visible>
+                    <scroll>false</scroll>
+                </control>
+                <control type="label">
+                    <width>1350</width>
+                    <height>70</height>
+                    <font>font36</font>
+                    <aligny>top</aligny>
+                    <label>$INFO[VideoPlayer.Season,,X]$INFO[VideoPlayer.Episode,,. ]$VAR[PlayerTitleLabelVar]</label>
+                    <visible>VideoPlayer.Content(episodes)</visible>
+                    <scroll>false</scroll>
+                </control>
+                <control type="label">
+                    <width>1600</width>
+                    <height>65</height>
+                    <font>font16</font>
+                    <label>[COLOR highlight]$INFO[VideoPlayer.Year]$INFO[VideoPlayer.Genre,  •  ][/COLOR]</label>
+                    <visible>VideoPlayer.Content(movies) | VideoPlayer.Content(musicvideos)</visible>
+                </control>
+                <control type="label">
+                    <width>1600</width>
+                    <height>65</height>
+                    <font>font16</font>
+                    <label>[COLOR highlight]$INFO[VideoPlayer.TVShowTitle][/COLOR]</label>
+                    <visible>VideoPlayer.Content(episodes)</visible>
+                </control>
+                <control type="textbox">
+                    <width>1600</width>
+                    <height>160</height>
+                    <font>font14_textbox</font>
+                    <aligny>top</aligny>
+                    <include>AutoscrollDefault</include>
+                    <label>[COLOR highlight]$INFO[VideoPlayer.Tagline,, ][/COLOR]$INFO[VideoPlayer.Plot]</label>
+                </control>
+            </control>
+            <control type="label">
+                <top>334</top>
+                <left>290</left>
+                <width>900</width>
+                <height>35</height>
+                <font>font12</font>
+                <label>[COLOR highlight] Progress[/COLOR] $INFO[Player.Time] - [COLOR highlight] Total Time[/COLOR] $INFO[Player.Duration] - [COLOR highlight]Time Remaining[/COLOR] $INFO[Player.TimeRemaining]</label>
+            </control>
+           </control>
+        <control type="group">
+            <animation effect="slide" start="0,300" end="0,0" time="750">WindowOpen</animation>
+            <animation effect="slide" start="0,300" end="0,0" time="750">VisibleChange</animation>
+            <animation effect="slide" start="0,0" end="0,300" time="750">WindowClose</animation>
+            <top>780</top>
+            <visible>VideoPlayer.Content(musicvideos)</visible>
+            <visible>!Window.IsActive(videoosd)</visible>
+            <control type="image">
+                <top>-16</top>
+                <left>-16</left>
+                <width>1952</width>
+                <height>332</height>
+                <texture border="16">dialog_context.png</texture>
+                <colordiffuse>dialog</colordiffuse>
+            </control>
+            <control type="image">
+                <left>30</left>
+                <top>30</top>
+                <width>240</width>
+                <height>240</height>
+                <aspectratio aligny="center" align="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" diffuse="diffuse/fullscreeninfo-square.png">$INFO[Player.Art(thumb)]</texture>
+            </control>
+            <control type="label">
+                <left>300</left>
+                <top>25</top>
+                <width>1585</width>
+                <height>40</height>
+                <scroll>false</scroll>
+                <font>font16</font>
+                <label>$INFO[VideoPlayer.Artist,, - ]$INFO[VideoPlayer.Title]</label>
+            </control>
+             <control type="group">
+                <visible>VideoPlayer.Content(musicvideos)</visible>
+                <left>300</left>
+                <control type="textbox">
+                    <top>90</top>
+                    <width>1600</width>
+                    <height>108</height>
+                    <font>font14_textbox</font>
+                    <aligny>top</aligny>
+                    <include>AutoscrollDefault</include>
+                    <label>$INFO[VideoPlayer.Plot]</label>
+                </control>
+            </control>
+            <control type="label">
+                <top>233</top>
+                <left>315</left>
+                <width>900</width>
+                <height>35</height>
+                <font>font12</font>
+                <label>$INFO[Player.Time]$INFO[Player.Duration, / ]</label>
+            </control>
+            <control type="label">
+                <top>233</top>
+                <left>975</left>
+                <width>900</width>
+                <height>35</height>
+                <font>font12</font>
+                <align>right</align>
+                <label>$INFO[Player.TimeRemaining]$INFO[Player.Duration, / ]</label>
+            </control>
+            <control type="label">
+                <top>233</top>
+                <left>300</left>
+                <width>1587</width>
+                <height>35</height>
+                <font>font12</font>
+                <align>center</align>
+                <label>$VAR[SeekLabelVar]</label>
+            </control>
+        </control>
+    </controls>
+</window>
